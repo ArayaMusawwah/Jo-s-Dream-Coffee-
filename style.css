@@ -628,7 +628,12 @@ section#selling {
   }
 
   .div-icon {
-    width: 45%;
+    justify-content: end;
+    width: 50%;
+  }
+
+  .div-icon a {
+    padding-left: 2rem;
   }
 
   .div-icon a:last-child {
