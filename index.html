@@ -26,13 +26,40 @@
         <a href="#home"><li>Home</li></a>
         <a href="#about"><li>About</li></a>
         <a href="#menu"><li>Menu</li></a>
+        <a href="#selling"><li>Buy</li></a>
         <a href="#contact"><li>Contact</li></a>
       </ul>
 
       <div class="div-icon">
-        <a href="#"><i data-feather="search"></i></a>
-        <a href="#"><i data-feather="shopping-cart"></i></a>
+        <a href="#" class="search-icon"><i data-feather="search"></i></a>
+        <a href="#" class="cart-button"><i data-feather="shopping-cart"></i></a>
         <a class="menu"><i data-feather="menu"></i></a>
+      </div>
+
+      <!-- SEARCH BAR -->
+      <div class="search-bar" id="search-box">
+        <input type="text" placeholder="Search..." class="search-box" />
+        <label for="search-box"><i data-feather="search"></i></label>
+      </div>
+
+      <!-- SHOPPING CART -->
+      <div class="cart">
+        <div class="cart-item">
+          <img src="./menu/bag1.jpeg" alt="bag 1" />
+          <div class="item-detail">
+            <h3>Espresso Beans</h3>
+            <div class="item-price">$14.99</div>
+          </div>
+          <a href="#"><i data-feather="trash-2" class="remove-item"></i></a>
+        </div>
+        <div class="cart-item">
+          <img src="./menu/bag1.jpeg" alt="bag 1" />
+          <div class="item-detail">
+            <h3>Espresso Beans</h3>
+            <div class="item-price">$14.99</div>
+          </div>
+          <a href="#"><i data-feather="trash-2" class="remove-item"></i></a>
+        </div>
       </div>
     </nav>
 
@@ -44,7 +71,7 @@
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem velit
           labore placeat totam.
         </p>
-        <a href="">Beli Sekarang</a>
+        <a href="#selling">Buy Now</a>
       </main>
     </section>
 
@@ -159,9 +186,127 @@
       </div>
     </section>
 
+    <!-- Our best selling section -->
+    <section id="selling">
+      <h2>Our <span>Best Selling</span></h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <div class="row">
+        <div class="selling-card">
+          <div class="selling-action">
+            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="add-to-cart"
+              ><i data-feather="shopping-cart"></i
+            ></a>
+          </div>
+          <div class="selling-img">
+            <img src="menu/bag1.jpeg" alt="bag 1" />
+          </div>
+          <div class="selling-content">
+            <div class="stars">
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="half-star"></i>
+            </div>
+            <h3>- Espresso Beans -</h3>
+            <p>$14.99 <span>$20.00</span></p>
+          </div>
+        </div>
+        <div class="selling-card">
+          <div class="selling-action">
+            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="add-to-cart"
+              ><i data-feather="shopping-cart"></i
+            ></a>
+          </div>
+          <div class="selling-img">
+            <img src="menu/bag2.jpg" alt="bag 2" />
+          </div>
+          <div class="selling-content">
+            <div class="stars">
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+            </div>
+            <h3>- Premium Americano Beans -</h3>
+            <p>$59.99 <span>$60.00</span></p>
+          </div>
+        </div>
+        <div class="selling-card">
+          <div class="selling-action">
+            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="add-to-cart"
+              ><i data-feather="shopping-cart"></i
+            ></a>
+          </div>
+          <div class="selling-img">
+            <img src="menu/bag3.jpg" alt="bag 3" />
+          </div>
+          <div class="selling-content">
+            <div class="stars">
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star"></i>
+            </div>
+            <h3>- Central Africano Beans -</h3>
+            <p>$34.99 <span>$50.00</span></p>
+          </div>
+        </div>
+        <div class="selling-card">
+          <div class="selling-action">
+            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="add-to-cart"
+              ><i data-feather="shopping-cart"></i
+            ></a>
+          </div>
+          <div class="selling-img">
+            <img src="menu/bag4.jpg" alt="bag 4" />
+          </div>
+          <div class="selling-content">
+            <div class="stars">
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="half-star"></i>
+            </div>
+            <h3>- Espress Beans -</h3>
+            <p>$24.99 <span>$21.00</span></p>
+          </div>
+        </div>
+        <div class="selling-card">
+          <div class="selling-action">
+            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="add-to-cart"
+              ><i data-feather="shopping-cart"></i
+            ></a>
+          </div>
+          <div class="selling-img">
+            <img src="menu/bag5.jpg" alt="bag 5" />
+          </div>
+          <div class="selling-content">
+            <div class="stars">
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star"></i>
+            </div>
+            <h3>- Espress Beans -</h3>
+            <p>$14.00 <span>$20.00</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT SECTION -->
     <section id="contact">
-      <h2>Contact Us</h2>
+      <h2><span>Contact</span> Us</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque dolor
         nihil cumi?
@@ -225,6 +370,9 @@
         </a>
         <a href="#menu">
           <li>Menu</li>
+        </a>
+        <a href="#selling">
+          <li>Buy</li>
         </a>
         <a href="#contact">
           <li>Contact</li>
