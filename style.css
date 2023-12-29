@@ -173,7 +173,7 @@ h1.logo {
   right: -100%;
   background-color: var(--bg2);
   padding: 1rem;
-  width: 30rem;
+  width: 28rem;
   height: 100vh;
   transition: all 0.4s linear;
   overflow: auto;
@@ -527,15 +527,15 @@ section#selling {
   width: 100%;
 }
 
-#selling .row .selling-card .stars {
+.stars {
   padding: 0.5rem 0 0.1rem;
 }
 
-#selling .row .selling-content .stars .filled-star {
+.filled-star {
   fill: var(--secondary);
 }
 
-#selling .row .selling-content .stars .half-star {
+.half-star {
   fill: var(--secondary);
   clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
 }
@@ -553,6 +553,111 @@ section#selling {
   font-weight: 100;
   font-size: 0.9rem;
   text-decoration: line-through;
+}
+
+/* Modal Box */
+
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(10, 10, 10, 0.886);
+}
+
+.modal a,
+.modal p,
+.modal h3 {
+  color: black;
+}
+
+.modal__container {
+  position: relative;
+  background-color: whitesmoke;
+  width: 80%;
+  margin: 10% auto;
+  padding: 3rem;
+  border: 1px solid #666;
+  box-shadow: 0 0 0.7rem var(--bg2);
+  animation: slideDown 0.3s;
+  -webkit-animation: slideDown 0.3s;
+}
+
+.modal__close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: black;
+}
+
+.modal__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.modal__item-content {
+  padding: 2rem;
+}
+
+.modal__item-content h3 {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.modal__content img {
+  height: 20rem;
+}
+
+.modal__item-price {
+  color: black;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.modal__item-content a {
+  background-color: var(--secondary);
+  color: white;
+  padding: 0.7rem 0;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.modal__item-content p {
+  font-size: 1.1rem;
+}
+
+.modal .filled-star,
+.modal .half-star {
+  color: black;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    opacity: 1;
+  }
 }
 
 /* Media Query */ /* Media Query */ /* Media Query */ /* Media Query */
@@ -629,11 +734,11 @@ section#selling {
 
   .div-icon {
     justify-content: end;
-    width: 50%;
+    width: 40%;
   }
 
   .div-icon a {
-    padding-left: 2rem;
+    margin-left: 2rem;
   }
 
   .div-icon a:last-child {
@@ -648,11 +753,24 @@ section#selling {
   #contact .map {
     height: 30rem;
   }
+
+  .modal__content {
+    flex-wrap: wrap;
+  }
+
+  .modal__item-content {
+    padding: 2rem 0 0;
+  }
 }
 
 /* Mobile */
 @media screen and (max-width: 450px) {
   html {
     font-size: 60%;
+    scroll-padding-top: 7.3rem;
+  }
+
+  .ul-nav {
+    width: 20rem;
   }
 }

@@ -186,14 +186,14 @@
       </div>
     </section>
 
-    <!-- Our best selling section -->
+    <!--Selling section -->
     <section id="selling">
       <h2>Our <span>Best Selling</span></h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       <div class="row">
         <div class="selling-card">
           <div class="selling-action">
-            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="view-button"><i data-feather="eye"></i></a>
             <a href="#" class="add-to-cart"
               ><i data-feather="shopping-cart"></i
             ></a>
@@ -215,7 +215,7 @@
         </div>
         <div class="selling-card">
           <div class="selling-action">
-            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="view-button"><i data-feather="eye"></i></a>
             <a href="#" class="add-to-cart"
               ><i data-feather="shopping-cart"></i
             ></a>
@@ -237,7 +237,7 @@
         </div>
         <div class="selling-card">
           <div class="selling-action">
-            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="view-button"><i data-feather="eye"></i></a>
             <a href="#" class="add-to-cart"
               ><i data-feather="shopping-cart"></i
             ></a>
@@ -259,7 +259,7 @@
         </div>
         <div class="selling-card">
           <div class="selling-action">
-            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="view-button"><i data-feather="eye"></i></a>
             <a href="#" class="add-to-cart"
               ><i data-feather="shopping-cart"></i
             ></a>
@@ -281,7 +281,7 @@
         </div>
         <div class="selling-card">
           <div class="selling-action">
-            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" class="view-button"><i data-feather="eye"></i></a>
             <a href="#" class="add-to-cart"
               ><i data-feather="shopping-cart"></i
             ></a>
@@ -386,6 +386,35 @@
         </p>
       </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="item-detail-modal">
+      <div class="modal__container">
+        <a href="#" class="modal__close-button"><i data-feather="x"></i></a>
+        <div class="modal__content">
+          <img src="menu/bag1.jpeg" alt="bag 1" />
+          <div class="modal__item-content">
+            <h3>Espresso Beans</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo
+              doloribus temporibus nesciunt non reiciendis eius aliquid, quo
+              dolorem doloremque, quae tempore corporis facilis.
+            </p>
+            <div class="stars">
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="filled-star"></i>
+              <i data-feather="star" class="half-star"></i>
+            </div>
+            <div class="modal__item-price">$14.99</div>
+            <a href="#" class="add-to-cart"
+              ><i data-feather="shopping-cart"></i> <span>add to cart</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script>
       feather.replace();

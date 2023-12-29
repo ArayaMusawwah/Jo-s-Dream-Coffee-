@@ -60,6 +60,31 @@ document.addEventListener("click", function (e) {
   }
 });
 
+// For view deatil button
+const viewButtons = document.querySelectorAll(".view-button");
+const modal = document.querySelector("#item-detail-modal");
+
+viewButtons.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    modal.style.display = "flex";
+    e.preventDefault();
+  });
+});
+
+/* For closing it */
+const modalCloseButtons = document.querySelector(".modal__close-button");
+
+modalCloseButtons.onclick = function (e) {
+  modal.style.display = "none";
+  e.preventDefault();
+};
+
+window.addEventListener("click", function (e) {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
 function addItem() {
   return `<div class="cart-item">
           <img src="./menu/bag1.jpeg" alt="bag 1" />
