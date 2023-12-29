@@ -222,6 +222,7 @@ h1.logo {
 section#home {
   min-height: 100dvh;
   display: flex;
+  justify-content: center;
   align-items: center;
   color: white;
   background-image: url("./mike-kenneally-tNALoIZhqVM-unsplash.jpg");
@@ -230,9 +231,44 @@ section#home {
   background-repeat: no-repeat;
   position: relative;
   margin-bottom: 3rem;
+  mask-image: linear-gradient(rgba(0 0 0/ 1) 85%, rgba(0 0 0 / 0));
+  -webkit-mask-image: linear-gradient(rgba(0 0 0/ 1) 85%, rgba(0 0 0 / 0));
+  -moz-mask-image: linear-gradient(rgba(0 0 0/ 1) 85%, rgba(0 0 0 / 0));
+  -ms-mask-image: linear-gradient(rgba(0 0 0/ 1) 85%, rgba(0 0 0 / 0));
+  -o-mask-image: linear-gradient(rgba(0 0 0/ 1) 85%, rgba(0 0 0 / 0));
 }
 
-section#home::after {
+.home__mask-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mask-image: url("./bg.png");
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url("./bg.png");
+  -moz-mask-image: url("./bg.png");
+  -ms-mask-image: url("./bg.png");
+  -o-mask-image: url("./bg.png");
+  -webkit-mask-size: cover;
+  -moz-mask-size: cover;
+  -ms-mask-size: cover;
+  -o-mask-size: cover;
+  -webkit-mask-position: center;
+  -moz-mask-position: center;
+  -ms-mask-position: center;
+  -o-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -moz-mask-repeat: no-repeat;
+  -ms-mask-repeat: no-repeat;
+  -o-mask-repeat: no-repeat;
+}
+
+/* section#home::after {
   content: "";
   position: absolute;
   display: block;
@@ -240,14 +276,16 @@ section#home::after {
   height: 20%;
   bottom: 0;
   background: linear-gradient(0deg, var(--bg) 7%, rgba(255, 255, 255, 0) 70%);
-}
+} */
 
 #home .content {
-  padding: 0 5rem;
+  margin: -10rem auto 0;
+  position: fixed;
 }
 
 #home .content h1 {
-  font-size: 4rem;
+  font-size: 4.7rem;
+  text-align: center;
 }
 
 #home .content h1 span {
@@ -255,8 +293,8 @@ section#home::after {
 }
 
 #home .content p {
+  text-align: center;
   font-size: 1.2rem;
-  padding: 0.5rem 0;
   line-height: 1.5;
   letter-spacing: 0.05rem;
   mix-blend-mode: difference;
@@ -266,6 +304,7 @@ section#home::after {
   display: inline-block;
   padding: 0.8rem 1.5rem;
   margin-top: 1.5rem;
+  margin-left: 4rem;
   background-color: var(--primary);
   color: white;
   border-radius: 7px;
@@ -306,6 +345,26 @@ section#selling {
 
 .about-img img {
   width: 100%;
+  mask-image: url(./menu/beans2.svg);
+  mask-position: center;
+  mask-size: 50%;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: url(./menu/beans2.svg);
+  -moz-mask-image: url(./menu/beans2.svg);
+  -ms-mask-image: url(./menu/beans2.svg);
+  -o-mask-image: url(./menu/beans2.svg);
+  -webkit-mask-position: center;
+  -moz-mask-position: center;
+  -ms-mask-position: center;
+  -o-mask-position: center;
+  -webkit-mask-size: 50%;
+  -moz-mask-size: 50%;
+  -ms-mask-size: 50%;
+  -o-mask-size: 50%;
+  -webkit-mask-repeat: no-repeat;
+  -moz-mask-repeat: no-repeat;
+  -ms-mask-repeat: no-repeat;
+  -o-mask-repeat: no-repeat;
 }
 
 .about-content {
@@ -772,5 +831,19 @@ section#selling {
 
   .ul-nav {
     width: 20rem;
+  }
+}
+
+/* Samsung Fold sialan */
+@media screen and (max-width: 350px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (prefers-color-cheme: dark) {
+  #favicon {
+    filter: invert(-100%);
+    -webkit-filter: invert(-100%);
   }
 }
