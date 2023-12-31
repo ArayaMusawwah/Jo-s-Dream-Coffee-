@@ -109,6 +109,27 @@ h1.logo {
   width: 15%;
 }
 
+.cart-button {
+  position: relative;
+}
+
+.div-icon__cart-badge {
+  position: absolute;
+  width: 1.1rem;
+  height: 1.1rem;
+  font-size: 0.7rem;
+  text-align: center;
+  bottom: 0;
+  right: -25%;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
 .div-icon a:last-child {
   display: none;
 }
@@ -173,10 +194,11 @@ h1.logo {
   right: -100%;
   background-color: var(--bg2);
   padding: 1rem;
-  width: 28rem;
-  height: 100vh;
+  width: 35rem;
+  height: calc(100vh - 100%);
+  overflow-y: auto;
+  box-sizing: border-box;
   transition: all 0.4s linear;
-  overflow: auto;
   -webkit-transition: all 0.4s linear;
   -moz-transition: all 0.4s linear;
   -ms-transition: all 0.4s linear;
@@ -190,7 +212,6 @@ h1.logo {
 .cart-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 1rem 1.4rem 1rem 1rem;
   margin: 0.5rem 0;
   /*border-bottom: 2px solid rgba(0, 0, 0, 0.382);
@@ -204,8 +225,8 @@ h1.logo {
 }
 
 .cart-item img {
-  width: 7rem;
-  height: 7rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -213,9 +234,89 @@ h1.logo {
   -o-border-radius: 50%;
 }
 
-.cart-item .remove-item {
-  fill: red;
-  color: rgba(0, 0, 0, 0.456);
+.item-detail {
+  padding: 0 1rem;
+}
+
+.item-price > * {
+  margin: 0.2rem 0;
+  margin-inline: 0.5rem;
+}
+
+.item-price button {
+  background-color: #030712;
+  width: 1rem;
+  height: 1rem;
+  color: white;
+  cursor: pointer;
+}
+
+.cart__footer {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 1rem;
+  color: #030712;
+}
+
+.cart__footer-anchor {
+  text-decoration: underline;
+  color: #030712 !important;
+}
+
+.cart__grand-total {
+  display: block;
+  border-top: 2px dashed #030712;
+  border-bottom: 2px dashed #030712;
+  margin: 1rem 0 1rem;
+  padding: 1rem 0 1rem;
+  font-size: 2rem;
+}
+
+.cart__form {
+  width: 100%;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.cart__form span {
+  display: block;
+  text-align: center;
+}
+
+.cart__form div {
+  background-color: var(--bg);
+  margin: 1rem 0;
+  padding: 0 1rem;
+  border: 2px solid white;
+}
+
+.cart__form input {
+  width: 80%;
+  color: white;
+  font-size: 1.2rem;
+  padding: 1rem 0.5rem;
+  background-color: transparent;
+}
+
+div.cart__form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  background-color: transparent;
+  border: 3px solid black !important;
+}
+
+.cart__form-button button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary);
+  color: white;
+  cursor: pointer;
 }
 
 /* Hero Section */
@@ -838,6 +939,14 @@ section#selling {
 @media screen and (max-width: 350px) {
   html {
     font-size: 55%;
+  }
+
+  .cart {
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 20rem;
   }
 }
 

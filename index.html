@@ -13,11 +13,15 @@
     />
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="style.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
     <title>Jo's Dream Coffee | Arμ's</title>
   </head>
   <body>
     <!-- NAVBAR -->
-    <nav id="navbar">
+    <nav id="navbar" x-data>
       <a href="#">
         <h1 class="logo">Jo's Dream <span>Coffee</span></h1>
       </a>
@@ -32,7 +36,14 @@
 
       <div class="div-icon">
         <a href="#" class="search-icon"><i data-feather="search"></i></a>
-        <a href="#" class="cart-button"><i data-feather="shopping-cart"></i></a>
+        <a href="#" class="cart-button"
+          ><i data-feather="shopping-cart"></i>
+          <span
+            class="div-icon__cart-badge"
+            x-show="$store.cart.quantity > 0"
+            x-text="$store.cart.quantity"
+          ></span>
+        </a>
         <a class="menu"><i data-feather="menu"></i></a>
       </div>
 
@@ -44,21 +55,69 @@
 
       <!-- SHOPPING CART -->
       <div class="cart">
-        <div class="cart-item">
-          <img src="./menu/bag1.jpeg" alt="bag 1" />
-          <div class="item-detail">
-            <h3>Espresso Beans</h3>
-            <div class="item-price">$14.99</div>
+        <template x-for="(item, index) in $store.cart.items" x-key="index">
+          <div class="cart-item">
+            <img :src="`./menu/${item.image}`" :alt="item.name" />
+            <div class="item-detail">
+              <h3 x-text="item.name"></h3>
+              <div class="item-price">
+                <span x-text="dollar(item.price)"></span>&times;
+                <button
+                  @click.prevent="$store.cart.remove(item.id)"
+                  id="remove"
+                >
+                  &minus;
+                </button>
+                <span x-text="item.quantity"></span>
+                <button @click.prevent="$store.cart.add(item)" id="add">
+                  &plus;</button
+                >&equals;
+                <span x-text="dollar(item.total)"></span>
+              </div>
+            </div>
           </div>
-          <a href="#"><i data-feather="trash-2" class="remove-item"></i></a>
+        </template>
+        <div class="cart__footer">
+          <span x-show="!$store.cart.items.length">Your cart is empty</span>
+          <a
+            href="#selling"
+            x-show="!$store.cart.items.length"
+            class="cart__footer-anchor"
+            >Go To Shop</a
+          >
+          <span x-show="$store.cart.items.length" class="cart__grand-total"
+            >Grand Total: <span x-text="dollar($store.cart.total)"></span>
+          </span>
         </div>
-        <div class="cart-item">
-          <img src="./menu/bag1.jpeg" alt="bag 1" />
-          <div class="item-detail">
-            <h3>Espresso Beans</h3>
-            <div class="item-price">$14.99</div>
-          </div>
-          <a href="#"><i data-feather="trash-2" class="remove-item"></i></a>
+        <div class="cart__form" x-show="$store.cart.items.length">
+          <span>Customer Detail</span>
+          <form action="#">
+            <div>
+              <label for="name">Name : </label>
+              <input type="text" id="name" name="name" placeholder="John Doe" />
+            </div>
+            <div>
+              <label for="email">Email : </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="john@mail.com"
+              />
+            </div>
+            <div>
+              <label for="phone">Phone : </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="6289524219334"
+              />
+            </div>
+            <div class="cart__form-button">
+              <button type="submit">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
     </nav>
@@ -80,7 +139,6 @@
     <!-- ABOUT SECTION -->
     <section id="about">
       <h2>About Us</h2>
-      <p></p>
       <div class="row">
         <div class="about-img">
           <img src="./section-img.jpg" alt="coffee image" class="about-img" />
@@ -189,120 +247,61 @@
     </section>
 
     <!--Selling section -->
-    <section id="selling">
+    <section id="selling" x-data="products">
       <h2>Our <span>Best Selling</span></h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       <div class="row">
-        <div class="selling-card">
-          <div class="selling-action">
-            <a href="#" class="view-button"><i data-feather="eye"></i></a>
-            <a href="#" class="add-to-cart"
-              ><i data-feather="shopping-cart"></i
-            ></a>
-          </div>
-          <div class="selling-img">
-            <img src="menu/bag1.jpeg" alt="bag 1" />
-          </div>
-          <div class="selling-content">
-            <div class="stars">
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="half-star"></i>
+        <template x-for="(item, index) in items" x-key="index">
+          <div class="selling-card">
+            <div class="selling-action">
+              <svg
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="view-button"
+              >
+                <use
+                  href="node_modules/feather-icons/dist/feather-sprite.svg#eye"
+                />
+              </svg>
+              <a
+                href="#"
+                @click.prevent="$store.cart.add(item)"
+                class="add-to-cart"
+                ><svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use
+                    href="node_modules/feather-icons/dist/feather-sprite.svg#shopping-cart"
+                  /></svg
+              ></a>
             </div>
-            <h3>- Espresso Beans -</h3>
-            <p>$14.99 <span>$20.00</span></p>
-          </div>
-        </div>
-        <div class="selling-card">
-          <div class="selling-action">
-            <a href="#" class="view-button"><i data-feather="eye"></i></a>
-            <a href="#" class="add-to-cart"
-              ><i data-feather="shopping-cart"></i
-            ></a>
-          </div>
-          <div class="selling-img">
-            <img src="menu/bag2.jpg" alt="bag 2" />
-          </div>
-          <div class="selling-content">
-            <div class="stars">
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
+            <div class="selling-img">
+              <img :src="`menu/${item.image}`" :alt="item.name" />
             </div>
-            <h3>- Premium Americano Beans -</h3>
-            <p>$59.99 <span>$60.00</span></p>
-          </div>
-        </div>
-        <div class="selling-card">
-          <div class="selling-action">
-            <a href="#" class="view-button"><i data-feather="eye"></i></a>
-            <a href="#" class="add-to-cart"
-              ><i data-feather="shopping-cart"></i
-            ></a>
-          </div>
-          <div class="selling-img">
-            <img src="menu/bag3.jpg" alt="bag 3" />
-          </div>
-          <div class="selling-content">
-            <div class="stars">
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star"></i>
+            <div class="selling-content">
+              <div
+                class="stars"
+                x-html="starMaker().repeat(item.stars) + halfStarMaker().repeat(item.halfStar)"
+              ></div>
+              <h3 x-text="`- ${item.name} -`"></h3>
+              <p>
+                <strong x-text="dollar(item.price)"></strong>
+                <span x-text="dollar(item.normalPrice)"></span>
+              </p>
             </div>
-            <h3>- Central Africano Beans -</h3>
-            <p>$34.99 <span>$50.00</span></p>
           </div>
-        </div>
-        <div class="selling-card">
-          <div class="selling-action">
-            <a href="#" class="view-button"><i data-feather="eye"></i></a>
-            <a href="#" class="add-to-cart"
-              ><i data-feather="shopping-cart"></i
-            ></a>
-          </div>
-          <div class="selling-img">
-            <img src="menu/bag4.jpg" alt="bag 4" />
-          </div>
-          <div class="selling-content">
-            <div class="stars">
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="half-star"></i>
-            </div>
-            <h3>- Espress Beans -</h3>
-            <p>$24.99 <span>$21.00</span></p>
-          </div>
-        </div>
-        <div class="selling-card">
-          <div class="selling-action">
-            <a href="#" class="view-button"><i data-feather="eye"></i></a>
-            <a href="#" class="add-to-cart"
-              ><i data-feather="shopping-cart"></i
-            ></a>
-          </div>
-          <div class="selling-img">
-            <img src="menu/bag5.jpg" alt="bag 5" />
-          </div>
-          <div class="selling-content">
-            <div class="stars">
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star" class="filled-star"></i>
-              <i data-feather="star"></i>
-            </div>
-            <h3>- Espress Beans -</h3>
-            <p>$14.00 <span>$20.00</span></p>
-          </div>
-        </div>
+        </template>
       </div>
     </section>
 
@@ -421,6 +420,7 @@
     <script>
       feather.replace();
     </script>
+    <script src="app.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

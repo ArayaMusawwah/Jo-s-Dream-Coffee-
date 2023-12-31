@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <title>Document</title>
+    <style>
+      div {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5rem auto;
+      }
+
+      div > * {
+        display: inline-block;
+        margin: 0 1rem;
+      }
+
+      .anjing {
+        width: 10rem;
+        height: 10rem;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div x-data="{ count : 0}">
+      <button @click="count--">-</button>
+      <h1 x-text="count"></h1>
+      <button @click="count++">+</button>
+
+      <div x-data="{open: false}" class="anjing">
+        <button
+          @click="open = !open"
+          x-text="open ? 'Tutup Lagi Bang!': 'Buka aku abang'"
+        ></button>
+        <div x-show="open" @click.outside="open = false">
+          <h1>Ciluk ba</h1>
+          <p>Kamu sangat terkejut</p>
+        </div>
+      </div>
+
+      <div x-data>
+        <ul>
+          <template x-for="i in $store.Diva.name">
+            <li x-text="i"></li>
+          </template>
+        </ul>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

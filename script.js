@@ -29,14 +29,6 @@ cartButton.onclick = (e) => {
 const removeCartItem = document.querySelectorAll(".remove-item");
 const addToCart = document.querySelectorAll(".add-to-cart");
 
-// For Adding Item to cart
-addToCart.forEach(function (el) {
-  el.addEventListener("click", function (e) {
-    cart.innerHTML += addItem();
-    e.preventDefault();
-  });
-});
-
 // For removing Item to cart
 removeCartItem.forEach(function (el) {
   el.addEventListener("click", function (e) {
@@ -60,7 +52,7 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// For view deatil button
+// For view deatil modal button
 const viewButtons = document.querySelectorAll(".view-button");
 const modal = document.querySelector("#item-detail-modal");
 
@@ -70,6 +62,13 @@ viewButtons.forEach((btn) => {
     e.preventDefault();
   });
 });
+
+// document.addEventListener("click", function (e) {
+//   console.log(e.target);
+//   if (e.target === viewButtons) {
+//     console.log("bingo");
+//   }
+// });
 
 /* For closing it */
 const modalCloseButtons = document.querySelector(".modal__close-button");
@@ -84,14 +83,3 @@ window.addEventListener("click", function (e) {
     modal.style.display = "none";
   }
 });
-
-function addItem() {
-  return `<div class="cart-item">
-          <img src="./menu/bag1.jpeg" alt="bag 1" />
-          <div class="item-detail">
-            <h3>Espresso Beans</h3>
-            <div class="item-price">$14.99</div>
-          </div>
-          <a href="#"><i data-feather="trash-2" class="remove-item"></i></a>
-        </div>`;
-}
