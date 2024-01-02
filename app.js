@@ -67,7 +67,7 @@ document.addEventListener("alpine:init", () => {
             item.quantity++;
             item.total = item.price * item.quantity;
             this.quantity++;
-            this.total += item.total;
+            this.total += item.price;
             this.total = parseFloat(this.total.toFixed(2));
             return item;
           }
@@ -85,7 +85,7 @@ document.addEventListener("alpine:init", () => {
             item.quantity--;
             item.total = item.price * item.quantity;
             this.quantity--;
-            this.total -= item.price;
+            this.total -= cartItem.price;
             this.total = parseFloat(this.total.toFixed(2));
             return item;
           }
